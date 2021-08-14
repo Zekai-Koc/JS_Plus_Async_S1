@@ -13,6 +13,7 @@
 // for (let index = 0; index < 10000; index++) {
 //     console.log("another code block.");
 // }
+
 // console.log("finished.")
 
 
@@ -84,7 +85,7 @@
 
 // ASyncrous Code example 1
 
-// console.clear();
+// // console.clear();
 
 // console.log("starting to execute!");
 
@@ -92,7 +93,7 @@
 //     console.log("executing...");
 // }
 
-// setTimeout(() => console.log("after 5 secs..."), 5000)
+// setTimeout(() => console.log("after 5 secs..."), 5000);
 
 // console.log("this line has to wait until the previous lines finish their execution.");
 
@@ -100,13 +101,13 @@
 //     console.log("another code block.");
 // }
 
-// console.log("finished.")
+// console.log("finished.");
 
 
 
 // ASyncrous Code example 2
 
-// console.clear();
+// // console.clear();
 
 // setTimeout(() => console.log("after 10 secs..."), 10000);
 
@@ -183,62 +184,62 @@
 
 
 // ASyncrous Code example 5
+// here we will try to simulate a real time environment and face a problem:
 
-function readSizeFromDB() {
+// function readSizeFromDB() {
 
-    let fileSize = 3000;
+//     let fileSize = 3000;
 
-    console.log("**********************************************************************");
-    console.log("readDB starting...");
+//     console.log("**********************************************************************");
+//     console.log("readDB starting...");
 
-    for (let index = 0; index < 1000; index++) {
-        console.log("reading image file name from DB...");        
-    }
+//     for (let index = 0; index < 1000; index++) {
+//         console.log("reading image file name from DB...");        
+//     }
 
-    console.log("readDB ending...");
-    console.log("**********************************************************************");
+//     console.log("readDB ending...");
+//     console.log("**********************************************************************");
 
-    return fileSize;
-}
+//     return fileSize;
+// }
 
-function loadImage(imageName, imageSize) {
-    console.log("-------------------------------------------");
-    console.log("starting to load image file: ", imageName, " imageSize: ", imageSize);
+// function loadImage(imageName, imageSize) {
+//     console.log("-------------------------------------------");
+//     console.log("starting to load image file: ", imageName, " imageSize: ", imageSize);
 
-    for (let index = 0; index < imageSize; index++) {
-        console.log("loading the image file...");        
-    }
+//     for (let index = 0; index < imageSize; index++) {
+//         console.log("loading the image file...");        
+//     }
 
-    console.log("load completed.", imageName, " has been loaded.");
-    console.log("-------------------------------------------");
-}
+//     console.log("load completed.", imageName, " has been loaded.");
+//     console.log("-------------------------------------------");
+// }
 
-console.log("execution begins.");
+// console.log("execution begins.");
 
-// normally, reading from a remote db is an async proccess.
-// here we are trying to simulate.
-let fileSize1 = 0;
+// // normally, reading from a remote db is an async proccess.
+// // here we are trying to simulate.
 
-console.log("file size first init: ", fileSize1);
+// let fileSize1 = 0;
 
-fileSize1 = setTimeout(readSizeFromDB, 3000); 
+// console.log("file size first init: ", fileSize1);
 
-console.log("file size just after let fileSize1: ", fileSize1);
+// fileSize1 = setTimeout(readSizeFromDB, 3000); 
 
-console.log("execution conts.");
+// console.log("file size just after let fileSize1: ", fileSize1);
 
-setTimeout(function () {loadImage("queue1.jpg", fileSize1)}, 1000);
+// console.log("execution continues...");
 
-console.log("file size after load image: ", fileSize1);
+// setTimeout(function () {loadImage("queue1.jpg", fileSize1)}, 1000);
 
-console.log("execution ends!")
+// console.log("file size after load image: ", fileSize1);
 
-console.log("file size at the end: ", fileSize1);
+// console.log("execution ends!")
+
+// console.log("file size at the end: ", fileSize1);
 
 
-
-
-// how can we solve this problem?
+// // how can we solve this problem?
 
 // function readSizeFromDB() {
 

@@ -98,3 +98,10 @@ body {
     color: purple;
     width: 400px;
   }
+
+  p {
+    font-size: 64px;
+    font-family: sans-serif;
+    text-align: center;
+    color: white;
+  }

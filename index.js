@@ -73,9 +73,11 @@
 // console.log("finished execution!")
 
 
+
 // Syncrous Code example 4
 // blocking_alert.html sayfasını göster...
 // html dosyasının sonundaki açıklamaları anlat.
+
 
 
 // yansılardan devam.
@@ -93,6 +95,7 @@
 //     console.log("executing...");
 // }
 
+// // setTimeout fonksiyonunu sonradan ekleyelim. önce gösterip bu senkron hali deyip...
 // setTimeout(() => console.log("after 5 secs..."), 5000);
 
 // console.log("this line has to wait until the previous lines finish their execution.");
@@ -102,6 +105,7 @@
 // }
 
 // console.log("finished.");
+
 
 
 
@@ -129,6 +133,7 @@
 
 
 
+
 // ASyncrous Code example 3
 // let's change our function to asyncron mode.
 
@@ -143,7 +148,6 @@
 //     console.log("load completed.", imageName, " has been loaded.");
 //     console.log("-------------------------------------------");
 // }
-
 
 // console.log("starting to execute.");
 
@@ -169,26 +173,67 @@
 // }
 
 
-// setTimeout(function () {loadImage("second image.jpg")}, 5000);
+// setTimeout(function () {loadImage("second ASYNC image.jpg")}, 5000);
 
 // console.log("starting to execute.");
 
-// setTimeout(function () {loadImage("first image.jpg")}, 7000);
+// setTimeout(function () {loadImage("first ASYNC image.jpg")}, 7000);
 
-// loadImage("syncron image.jpg");
+// loadImage("SYNC image.jpg");
 
 // console.log("finished execution!");
 
 
+// BU ÖRNEKTE SÜREYİ SIFIR OLARAK DA GÖSTER. SONRA DA AKIŞ ŞEMASINDAN BAHSEDEBİLİRSİN.
+
+
+
+
+
+
+// // ASyncrous Code example YENİ:
+// // html sayfasındaki p'yi aç.
+
+// const myPara = document.querySelector("p");
+// console.log(myPara.innerHTML);
+
+// myNewPara = "!!!";
+
+// function readParaFromDB() {
+//     myNewPara = "this paragraph comes from our db...";
+//     console.log(myNewPara);
+// }
+// console.log("myNewPara: ", myNewPara);
+
+
+// setTimeout(readParaFromDB, 0);
+
+// myPara.innerHTML = myNewPara;
+
+
+// setTimeout(() => {console.log("after 2 secs, myPara: ", myPara.innerHTML)}, 2000);
+
+
+// setTimeout(function () {
+//     console.log("1111111111111");
+//     console.log("myNewPara: ", myNewPara);
+//     myPara.innerHTML = myNewPara;
+// }, 3000);
+
+
+
+// burada bizim servis yönetim projesini anlat.
 
 
 
 // ASyncrous Code example 5
 // here we will try to simulate a real time environment and face a problem:
 
-// function readSizeFromDB() {
+// let fileID = 1111;
 
-//     let fileSize = 3000;
+// function readIDFromDB() {
+
+//     fileID++;
 
 //     console.log("**********************************************************************");
 //     console.log("readDB starting...");
@@ -199,15 +244,13 @@
 
 //     console.log("readDB ending...");
 //     console.log("**********************************************************************");
-
-//     return fileSize;
 // }
 
-// function loadImage(imageName, imageSize) {
+// function loadImage(imageName, imageID) {
 //     console.log("-------------------------------------------");
-//     console.log("starting to load image file: ", imageName, " imageSize: ", imageSize);
+//     console.log("starting to load image file: ", imageName, " imageID: ", imageID);
 
-//     for (let index = 0; index < imageSize; index++) {
+//     for (let index = 0; index < imageID; index++) {
 //         console.log("loading the image file...");        
 //     }
 
@@ -220,28 +263,30 @@
 // // normally, reading from a remote db is an async proccess.
 // // here we are trying to simulate.
 
-// let fileSize1 = 0;
+// console.log("file ID first init: ", fileID);
 
-// console.log("file size first init: ", fileSize1);
+// fileID1 = setTimeout(readIDFromDB, 3000); 
 
-// fileSize1 = setTimeout(readSizeFromDB, 3000); 
-
-// console.log("file size just after let fileSize1: ", fileSize1);
+// console.log("file ID just after let fileID1: ", fileID);
 
 // console.log("execution continues...");
 
-// setTimeout(function () {loadImage("queue1.jpg", fileSize1)}, 1000);
+// setTimeout(function () {loadImage("queue1.jpg", fileID)}, 1000);
 
-// console.log("file size after load image: ", fileSize1);
+// console.log("file ID after load image: ", fileID);
 
 // console.log("execution ends!")
 
-// console.log("file size at the end: ", fileSize1);
+// console.log("file ID at the end: ", fileID);
+
+
+
+
 
 
 // // how can we solve this problem?
 
-// function readSizeFromDB() {
+// function readIDFromDB() {
 
 //     let fileSize = 3000;
 
@@ -272,9 +317,13 @@
 
 
 // setTimeout(() => {
-//     let fileSize1 = readSizeFromDB();
+//     let fileSize1 = readIDFromDB();
 //     console.log("file size 2: ", fileSize1);
-//     setTimeout(function () {loadImage("queue1.jpg", fileSize1)}, 1000);
+
+//     setTimeout(function () {
+//         loadImage("queue1.jpg", fileSize1)
+//     }, 1000);
+
 //     console.log("file size 3: ", fileSize1);
 // }, 3000);
 
